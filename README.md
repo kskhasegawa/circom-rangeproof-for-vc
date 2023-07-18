@@ -23,6 +23,11 @@ snarkjs zkey contribute hashAndCompare_0000.zkey hashAndCompare_0001.zkey --name
 snarkjs zkey export verificationkey hashAndCompare_0001.zkey verification_key.json
 ```
 
+input generation  
+```
+node generate_input.js statement.json input.json
+```
+
 witness generation
 ```
 cd hash_to_fr_to_commit_and_compare_js
