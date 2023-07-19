@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { blake2b } = require('blakejs');
 
 function getPaddedInput(input, totalBits) {
   const utf8Encoder = new TextEncoder();
@@ -55,7 +54,7 @@ function formatInputJSON(statement) {
   const input = {
     "in": getPaddedInput(statement.statement, totalBits),
     "message_length": statement.statement.length,
-    "base": hexToLittleEndianBits(statement.proofChallenge, 256),
+    "base": hexToLittleEndianBits(statement.proof_challenge, 256),
     "blinding_factor": hexToLittleEndianBits(statement.blinding_factor, 256),
     "target": statement.target
   };

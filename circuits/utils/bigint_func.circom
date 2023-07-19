@@ -1,8 +1,7 @@
 pragma circom 2.0.2;
 
 /*
-From circom-ecdsa
-"license": "ISC",
+From circom-ecdsa( https://github.com/0xPARC/circom-ecdsa )
 */
 
 

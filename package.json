@@ -4,7 +4,7 @@
     "description": "verify commited statement included in verifiable presentation in circom",
     "main": "index.js",
     "author": "kskhasegawa",
-    "license": "MIT",
+    "license": "GPL-3.0",
     "dependencies": {
         "circomlib": "^2.0.2",
         "circomlibjs": "^0.1.7",
