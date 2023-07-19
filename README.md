@@ -1,5 +1,5 @@
 # circom-rangeproof-for-vc
-circom circuits for rangeproof of birthdate described in Verifiable credentials
+circom circuits for rangeproof of birthdate described in Verifiable credentials.  
 Do not use this repository as it is for experimental purposes.
 
 Verifiable credentials(VCs) have property called "selective disclosure".
