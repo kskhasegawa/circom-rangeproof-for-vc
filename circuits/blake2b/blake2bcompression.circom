@@ -2,15 +2,10 @@ pragma circom  2.0.0;
 
 include "constants.circom";
 include "mixing.circom";
-// include "../../../../circomlib/circuits/binsum.circom";
-// include "../../../../circomlib/circuits/gates.circom";
-// include "rotate.circom";
-
-// include "../../../../circomlib/circuits/bitify.circom";
 
 template Blake2bcompression() {
     signal input h[8][64];
-    signal input m[16][64];//たぶん
+    signal input m[16][64];
     signal input t;//2*w bit offset counter
     signal input f;//final block indicator
     signal output out[8][64];
@@ -48,7 +43,7 @@ template Blake2bcompression() {
                 v[i][j] <== n2b[0].out[j]; 
             }
         }
-        //これ本当に64bit右シフト？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+
         else if (i==13) {//v[13] <-- H(5) ^ (t >> 64);
             for (j=0; j<64; j++) {
                 b2n[1].in[j] <== iv[j];
@@ -58,17 +53,7 @@ template Blake2bcompression() {
             for (j=0; j<64; j++) {
                 v[i][j] <== n2b[1].out[j]; 
             }  
-            //             //test
-            // log("iv output");
-            // for (j=0; j<64; j++) {
-            //     log(iv[63-j]);
-            // }
-            // log("iv end----------------");
-            // log("result output");
-            // for (j=0; j<64; j++) {
-            //     log(v[i][63-j]);
-            // }
-            // log("result end");
+
         }
         else {//i==14 v[14] <-- H(6) ^ (0xFFFFFFFFFFFFFFFF & (f*0xFFFFFFFFFFFFFFFF));
             for (j=0; j<64; j++) {
@@ -82,13 +67,6 @@ template Blake2bcompression() {
         }
     }
 
-
-    /*
-        ここまではOK
-    */
-
-    // component sigma[12];
-    // signal s[12][16];
     var sigma[12][16];
     component g[12][8];
     for (i=0; i<12; i++) {

@@ -36,22 +36,13 @@ template Hash2Fr2CommitAndCompareDate(n, index) {//input:1024*n bitのメッセ�
         hash2fr.a[i] <== blake2b384.out[i];
     }
 
-    // log("hash2fr--------------------");
-    // for (i=0; i<256; i++) {
-    //     log(hash2fr.out[255-i]);
-    // }
-    // log("hash2fr--------------------");
 
     for (i=0; i<256; i++) {
         bin2bint[0].in[i] <== hash2fr.out[i];
         bin2bint[1].in[i] <== base[i];
         bin2bint[2].in[i] <== blinding_factor[i];
     }
-    // log("--------------------");
-    // for (i=0; i<8; i++) {
-    //     log(bin2bint[2].out[i]);
-    // }
-    // log("--------------------");
+
 
     for (i=0; i<8; i++) {
         comm.secret[i] <== bin2bint[0].out[i];

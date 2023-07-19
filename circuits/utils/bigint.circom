@@ -8,8 +8,7 @@ include "bigint_func.circom";
 
 
 /*
-From circom-ecdsa
-"license": "ISC",
+From circom-ecdsa( https://github.com/0xPARC/circom-ecdsa )
 */
 
 // addition mod 2**n with carry bit

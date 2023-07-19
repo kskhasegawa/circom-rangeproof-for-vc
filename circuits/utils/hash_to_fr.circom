@@ -34,13 +34,6 @@ template Hash_to_Fr() {//n=8, k=32固定
         b2n[0].in[i] <== a[32*12-1-i];
     }
 
-    // log("-------------------");
-    // for(var i=0; i<12; i++) {
-    //     log("b2n[",i,"] is");
-    //     log(b2n[i].out);
-    // }
-    // log("-------------------");
-
     a_new[0] <== b2n[0].out;
     a_new[1] <== b2n[1].out;
     a_new[2] <== b2n[2].out;
@@ -65,31 +58,12 @@ template Hash_to_Fr() {//n=8, k=32固定
         multmodp.b[i] <== f_2_192[i];
         multmodp.p[i] <== p[i];
     }
-    // for (var i=0; i<8; i++) {
-    //     if (i < 6) {
-    //         multmodp.a[i] <== a_new[i+6];
-    //     }
-    //     else {
-    //         multmodp.a[i] <== 0;
-    //     }
-    //     multmodp.b[i] <== f_2_192[i];
-    //     multmodp.p[i] <== p[i];
-    // }
     
     component add = BigAdd(32, 8);
     for (var i=0; i<8; i++) {
         add.a[i] <== a_new[i];
         add.b[i] <== multmodp.out[i];        
     }
-    // for (var i=0; i<8; i++) {
-    //     if (i < 6) {
-    //         add.a[i] <== a_new[i];
-    //     }
-    //     else {
-    //         add.a[i] <== 0;
-    //     }
-    //     add.b[i] <== multmodp.out[i];        
-    // }
 
     component mod = BigMod(32, 8);
     for (var i=0; i<8; i++) {
@@ -98,12 +72,6 @@ template Hash_to_Fr() {//n=8, k=32固定
         mod.b[i] <== p[i];        
     }
 
-    // log("-------------------");
-    // for(var i=0; i<8; i++) {
-    //     log("mod.out[",i,"].out is");
-    //     log(mod.mod[i]);
-    // }
-    // log("-------------------");
 
     component bint2bin = Bigint2Binary(32, 8);
     for (var i=0; i<8; i++) {

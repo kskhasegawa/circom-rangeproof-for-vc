@@ -39,7 +39,6 @@ template P(x) {
 }
 
 //G rotation constants
-//いらないかも
 template RotConst(x) {
     signal output out;
     var c[4] = [32, 24, 16, 63];//R1, R2, R3, R4
