@@ -6,7 +6,7 @@ Verifiable credentials(VCs) have property called "selective disclosure".
 It enable a credential holder to disclose only necessary information to a verifier.   
 For example, a holder can show only their date of birth and conceal any other information in their credentials. 
 Selective disclosure methods are fundamental to enhancing a client's privacy.  
-Even if using selective disclosure, a credential holder must present a date of birth for a verifier to confirm that it meets the age limit.
+However, even when using selective disclosure, a credential holder must present a date of birth for a verifier to confirm that it meets the age limit.
 Under traditional system environments, a verifier needs to know a client's personal information in order to verify its authenticity, confirm that it meets some condition, and decide to provide goods or services.
 They cannot perform these procedures if the information is concealed.  
 
@@ -49,7 +49,7 @@ The value of "target" is any date for which you want to prove that the date of b
 ```
 {
     "statement": "<did:example:b34ca6cd37bbf23> <http://schema.org/birthDate> \"1958-07-17\"^^<http://www.w3.org/2001/XMLSchema#dateTime> .",
-    "proofChallenge": "07c15be749e0d9277b25b62ea2e02487822687644024f024a7e53ac43a449fe4",
+    "proof_challenge": "07c15be749e0d9277b25b62ea2e02487822687644024f024a7e53ac43a449fe4",
     "blinding_factor": "2664991206cc6e6a144513f4c899a417ee516fa456ee3f9ec51c159ddca97c33",
     "target": [1990, 12, 31]
 }
