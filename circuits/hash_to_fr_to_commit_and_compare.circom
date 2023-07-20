@@ -1,3 +1,12 @@
+/**
+ * hash_to_fr_to_commit_and_compare.circom
+ * @Package circom_range_proof_for_vc
+ * @author ZKSHT
+ * @copyright 2023 ZKSHT. All rights reserved.
+ * @license GPL-v3.0
+ */
+
+
 pragma circom  2.0.0;
 
 include "blake2b/blake2b384_padded.circom";
@@ -5,7 +14,7 @@ include "compareDate.circom";
 include "utils/commitment.circom";
 include "utils/hash_to_fr.circom";
 
-template Hash2Fr2CommitAndCompareDate(n, index) {//input:1024*n bitのメッセージ + target
+template Hash2Fr2CommitAndCompareDate(n, index) {//input:1024*n bit message + target
     var bits = 1024;
     signal input in[bits*n];//message input
     signal input message_length;

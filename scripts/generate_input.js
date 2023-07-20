@@ -1,3 +1,11 @@
+/**
+ * generate_input.js
+ * @Package circom_range_proof_for_vc
+ * @author ZKSHT
+ * @copyright 2023 ZKSHT. All rights reserved.
+ * @license GPL-v3.0
+ */
+
 const fs = require('fs');
 
 function getPaddedInput(input, totalBits) {

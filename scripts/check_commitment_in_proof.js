@@ -1,31 +1,40 @@
+/**
+ * chec_commitment_in_proof.js
+ * @Package circom_range_proof_for_vc
+ * @author ZKSHT
+ * @copyright 2023 ZKSHT. All rights reserved.
+ * @license GPL-v3.0
+ */
+
+
 const fs = require('fs');
 
-// コマンドライン引数を取得
+
 const proofFile = process.argv[2];
 const commitmentFile = process.argv[3];
 
-// 入力が指定されているか確認
+
 if (!proofFile || !commitmentFile) {
   console.log('Usage: node script.js <proofFile> <commitmentFile>');
   process.exit(1);
 }
 
-// main関数の定義
+// main
 function main() {
-  // proofファイルの読み込み
+  // proof
   const proof = JSON.parse(fs.readFileSync(proofFile, 'utf-8'));
   const proofValue = proof.proof.proofValue;
 
 //   console.log(proofValue);
 
-  // commitmentファイルの読み込み
+  // commitment
   const commitmentHexArray = JSON.parse(fs.readFileSync(commitmentFile, 'utf-8'));
 
-  // Hex配列を連結してcommitmentを作成
+  // generate commitment from hex
   const commitmentBits = commitmentHexArray.slice(0, 256).join('');
   const commitment = BigInt(`0b${commitmentBits}`).toString(16);
 
-  // checkCommitmentInProof関数の定義と使用
+
   function checkCommitmentInProof(proofValue, commitment) {
     // Convert base64 proofValue to byte array
     const proofValueBytes = Uint8Array.from(atob(proofValue), c => c.charCodeAt(0));
@@ -59,10 +68,10 @@ function main() {
     return bytes;
   }
 
-  // checkCommitmentInProof関数を呼び出して結果を出力
+
   const isContained = checkCommitmentInProof(proofValue, commitment);
   console.log("Commitment is contained in proofValue:", isContained);
 }
 
-// main関数の呼び出し
+
 main();

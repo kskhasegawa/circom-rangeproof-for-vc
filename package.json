@@ -1,9 +1,9 @@
 {
     "name": "circom-rangeproof-for-vc",
     "version": "0.0.1",
-    "description": "verify commited statement included in verifiable presentation in circom",
+    "description": "circom circuits for rangeproof of birthdate described in Verifiable credentials.",
     "main": "index.js",
-    "author": "kskhasegawa",
+    "author": "ZKSHT",
     "license": "GPL-3.0",
     "dependencies": {
         "circomlib": "^2.0.2",

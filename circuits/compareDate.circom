@@ -1,3 +1,12 @@
+/**
+ * copareDate.circom
+ * @Package circom_range_proof_for_vc
+ * @author ZKSHT
+ * @copyright 2023 ZKSHT. All rights reserved.
+ * @license GPL-v3.0
+ */
+
+
 pragma circom 2.0.0;
 
 include "../node_modules/circomlib/circuits/bitify.circom";
@@ -6,11 +15,11 @@ include "../node_modules/circomlib/circuits/gates.circom";
 
 
 /*
-    input：①utf-8のdate("yyyy-mm-dd")のbinary(80bit) + ②ターゲットのスカラー(yyyy, mm, dd)
-    output：1 iff ①<②
+    input：①utf-8 date("yyyy-mm-dd") binary(80bit) + ②target date(yyyy, mm, dd)
+    output：1 iff ① < ②
 */
 
-template Utf2Num(n) {//8bit*n受け取ってutf-8から数値に変換
+template Utf2Num(n) {
     signal input in[8*n];
     signal output out;
 
@@ -40,7 +49,7 @@ template Utf2Num(n) {//8bit*n受け取ってutf-8から数値に変換
 
 }
 
-template CompareDate() {//inのビット列の日付の方がtargetの日付より新しいなら1を出力する
+template CompareDate() {//return 1 iff in > target
     //e.g. 1958-07-17 = 00110001 00111001 00110111 00110001 00101101 00110000 00110011 00101101 00110010 00110000
     
     signal input in[80];//80bit input
@@ -53,7 +62,7 @@ template CompareDate() {//inのビット列の日付の方がtargetの日付よ�
     u2n[2] = Utf2Num(2);//day
 
     var i;
-    for (i=0; i<4; i++) {//リトルエンディアン
+    for (i=0; i<4; i++) {
         u2n[0].in[8*i] <== in[8*(i+1)-1];
         u2n[0].in[8*i+1] <== in[8*(i+1)-2];
         u2n[0].in[8*i+2] <== in[8*(i+1)-3];
@@ -87,12 +96,12 @@ template CompareDate() {//inのビット列の日付の方がtargetの日付よ�
     }
 
     component lt[3];
-    lt[0] = LessThan(11);//2048まで
-    lt[1] = LessThan(4);//16まで
-    lt[2] = LessThan(5);//32まで
+    lt[0] = LessThan(11);
+    lt[1] = LessThan(4);
+    lt[2] = LessThan(5);
     component let[3];
-    let[0] = LessEqThan(11);//2048まで
-    let[1] = LessEqThan(4);//16まで
+    let[0] = LessEqThan(11);
+    let[1] = LessEqThan(4);
 
     lt[0].in[0] <== u2n[0].out;
     lt[0].in[1] <== target[0];

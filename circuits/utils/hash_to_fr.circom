@@ -1,3 +1,12 @@
+/**
+ * hash_to_fr.circom
+ * @Package circom_range_proof_for_vc
+ * @author ZKSHT
+ * @copyright 2023 ZKSHT. All rights reserved.
+ * @license GPL-v3.0
+ */
+
+
 pragma circom 2.0.3;
 
 include "bigint.circom";
