@@ -1,8 +1,9 @@
+Do not use this repository as it is for experimental purposes.  
+
 # circom-rangeproof-for-vc
 circom circuits for rangeproof of birthdate described in Verifiable credentials.  
-Do not use this repository as it is for experimental purposes.
 
-Verifiable credentials(VCs) have property called "selective disclosure".
+Verifiable credentials(VCs) can apply selective disclosure methods.
 It enable a credential holder to disclose only necessary information to a verifier.   
 For example, a holder can show only their date of birth and conceal any other information in their credentials. 
 Selective disclosure methods are fundamental to enhancing a client's privacy.  
@@ -18,7 +19,7 @@ Therefore, for example, it is possible to prove that I am at least 20 years old 
 To generate zk-SNARK proof, it need some data.  
 Birthdate statement, proof challenge, and blinding factor, which are used to create a commitment included in Verifiable presentation(VP) proof.  
 
-To use VCs, and extract those data, we use [jsonld-signatures-bbs](https://github.com/kskhasegawa/jsonld-signatures-bbs) library.  
+To use VCs, and extract those data, we use [@kskhasegawa/jsonld-signatures-bbs](https://github.com/kskhasegawa/jsonld-signatures-bbs) library.  
 
 ## Getting started  
 
@@ -44,8 +45,8 @@ snarkjs zkey export verificationkey hashAndCompare_0001.zkey verification_key.js
 node generate_input.js statement.json input.json
 ```
 statement.json is like below.  
-Those values can be extracted from [jsonld-signatures-bbs](https://github.com/kskhasegawa/jsonld-signatures-bbs) when VP is created.  
-The value of "target" is any date for which you want to prove that the date of birth in the statement is older than that date.
+Those values can be extracted from [@kskhasegawa/jsonld-signatures-bbs](https://github.com/kskhasegawa/jsonld-signatures-bbs) when VP is created.  
+The value of "target" is an arbitrary date for which you want to prove that the date of birth described in the statement is older(or newer) than that date.
 ```
 {
     "statement": "<did:example:b34ca6cd37bbf23> <http://schema.org/birthDate> \"1958-07-17\"^^<http://www.w3.org/2001/XMLSchema#dateTime> .",
@@ -68,7 +69,7 @@ snarkjs groth16 prove hashAndCompare_0001.zkey witness.wtns proof.json public.js
 ```
 
 ### verify  
-Verify whether the birthdate described in the statement string is older than target or not, without showing plain text of the statement.  
+Verify whether the birthdate described in the statement is older(or newer) than target or not, without showing plaintext of the statement.  
 ```
 snarkjs groth16 verify verification_key.json public.json proof.json
 ```
