@@ -19,7 +19,7 @@ Therefore, for example, it is possible to prove that I am at least 20 years old 
 To generate zk-SNARK proof, it need some data.  
 Birthdate statement, proof challenge, and blinding factor, which are used to create a commitment included in Verifiable presentation(VP) proof.  
 
-To use VCs, and extract those data, we use [@kskhasegawa/jsonld-signatures-bbs](https://github.com/kskhasegawa/jsonld-signatures-bbs) library.  
+To use VCs, and extract those data, we use [@kskhasegawa/jsonld-signatures-bbs](https://github.com/kskhasegawa/jsonld-signatures-bbs) (modified version of [mattrglobal's](https://github.com/mattrglobal/jsonld-signatures-bbs)) library.  
 
 ## Getting started  
 
